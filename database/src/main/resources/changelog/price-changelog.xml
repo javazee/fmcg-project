@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="creation_table_price" author="eduard">
+        <createTable tableName="price">
+            <column name="item_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chain_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regular_price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="price" columnNames="item_id, chain_name" constraintName="price_pk"/>
+    </changeSet>
+    <changeSet id="load prices" author="eduard">
+        <loadData tableName="price" file="data/prices.csv" separator=";" quotchar="'">
+            <column name="chain_name" header="Chain_name"/>
+            <column name="item_id" header="Material No"/>
+            <column name="regular_price" header="Regular price per unit"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

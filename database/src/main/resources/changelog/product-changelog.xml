@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="creation_table_product" author="eduard">
+        <createTable tableName="product">
+            <column name="material_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(999)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_code" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="load products" author="eduard">
+        <loadData tableName="product" file="data/products.csv" separator=";" quotchar="'">
+            <column name="material_id" header="Material_No"/>
+            <column name="description" header="Material_Desc_RUS"/>
+            <column name="category_code" header="L3_Product_Category_Code"/>
+            <column name="category_name" header="L3_Product_Category_Name"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
