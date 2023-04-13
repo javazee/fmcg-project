@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="creation_table_shipment" author="eduard">
+        <createTable tableName="shipment">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="shipment_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="material_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chain_name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="volume" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_cost" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="add foreign key" author="eduard">
+        <addForeignKeyConstraint baseTableName="shipment" baseColumnNames="customer_id" constraintName="customer_id_fk"
+                                 referencedTableName="customer"
+                                 referencedColumnNames="customer_id"/>
+    </changeSet>
+    <changeSet id="load shipments" author="eduard">
+        <loadData tableName="shipment" file="data/shipments.csv" separator=";" quotchar="'">
+            <column name="shipment_date" header="Date"/>
+            <column name="material_id" header="Material No"/>
+            <column name="customer_id" header="CH3 Ship To Code"/>
+            <column name="chain_name" header="сеть"/>
+            <column name="volume" header="Volume, units"/>
+            <column name="total_cost" header="Actual Sales Value"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
