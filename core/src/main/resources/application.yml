@@ -1,16 +1,21 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:h2:mem:dev_db;INIT=CREATE SCHEMA IF NOT EXISTS fmcg
     username: sa
     password: password
     driverClassName: org.h2.Driver
+    hikari:
+      schema: FMCG
+      minimumIdle: 2
   liquibase:
     enabled: true
     change-log: classpath:changelog-master.xml
     default-schema: FMCG
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
-    show-sql: false
+    show-sql: true
     hibernate:
       ddl-auto: none
   h2:
@@ -19,7 +24,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,prometheus
+        include: health,prometheus,logger
   metrics:
     export:
       prometheus:

@@ -1,7 +1,10 @@
 package ru.retail.expert.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -21,7 +24,7 @@ public class Product {
     private Long categoryCode;
     @Column(nullable = false)
     private String categoryName;
-    @OneToMany
     @JoinColumn(name = "material_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Price> prices;
 }
