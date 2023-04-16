@@ -20,10 +20,12 @@ public class Shipment {
     private Long id;
     @Column(nullable = false)
     private LocalDate shipmentDate;
-    @Column(nullable = false)
-    private Long materialId;
-    @Column(name = "customer_id", nullable = false)
-    private Long customerId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "material_id", referencedColumnName = "material_id", nullable = false)
+    private Product product;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
+    private Customer customer;
     private String chainName;
     @Column(nullable = false)
     private Integer volume;

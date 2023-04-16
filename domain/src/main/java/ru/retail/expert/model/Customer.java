@@ -16,6 +16,7 @@ import java.util.List;
 @Table(name = "customer")
 public class Customer {
     @Id
+    @Column(name = "customer_id", nullable = false)
     private Long customerId;
     @Column(nullable = false)
     private String customerName;

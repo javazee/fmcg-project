@@ -29,10 +29,15 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="add foreign key" author="eduard">
+    <changeSet id="add foreign key customer_id_fk" author="eduard">
         <addForeignKeyConstraint baseTableName="shipment" baseColumnNames="customer_id" constraintName="customer_id_fk"
                                  referencedTableName="customer"
                                  referencedColumnNames="customer_id"/>
+    </changeSet>
+    <changeSet id="add foreign key material_id_fk" author="eduard">
+        <addForeignKeyConstraint baseTableName="shipment" baseColumnNames="material_id" constraintName="shipment_material_id_fk"
+                                 referencedTableName="product"
+                                 referencedColumnNames="material_id"/>
     </changeSet>
     <changeSet id="load shipments" author="eduard">
         <loadData tableName="shipment" file="data/shipments.csv" separator=";" quotchar="'">

@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name = "product")
 public class Product {
     @Id
+    @Column(name = "material_id", nullable = false)
     private Long materialId;
     @Column(nullable = false)
     private String description;

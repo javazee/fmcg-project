@@ -21,7 +21,7 @@
         <addPrimaryKey tableName="price" columnNames="material_id, chain_name" constraintName="price_pk"/>
     </changeSet>
     <changeSet id="add foreign key" author="eduard">
-        <addForeignKeyConstraint baseTableName="price" baseColumnNames="material_id" constraintName="material_id_fk"
+        <addForeignKeyConstraint baseTableName="price" baseColumnNames="material_id" constraintName="price_material_id_fk"
                                  referencedTableName="product"
                                  referencedColumnNames="material_id"/>
     </changeSet>
