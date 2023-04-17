@@ -31,5 +31,6 @@ public class Shipment {
     private Integer volume;
     @Column(nullable = false)
     private Double totalCost;
-
+    @Column
+    private String priceTag;
 }

@@ -27,6 +27,9 @@
             <column name="total_cost" type="DOUBLE">
                 <constraints nullable="false"/>
             </column>
+            <column name="price_tag" type="VARCHAR(10)">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
     <changeSet id="add foreign key customer_id_fk" author="eduard">

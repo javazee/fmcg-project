@@ -8,4 +8,5 @@
     <include file="changelog/price-changelog.xml"/>
     <include file="changelog/customer-changelog.xml"/>
     <include file="changelog/shipment-changelog.xml"/>
+    <include file="changelog/fill-promo-tag-changelog.xml"/>
 </databaseChangeLog>
