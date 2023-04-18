@@ -54,8 +54,8 @@ public class AnalyseServiceImpl extends AnalyseService {
                                 .stream()
                                 .collect(Collectors.groupingBy(ShipmentStats::getPriceTag,
                                         Collectors.summingLong(ShipmentStats::getVolumeSum)));
-                        Long promoVolume = volumeByPriceTag.get("PROMO");
-                        Long regularVolume = volumeByPriceTag.get("REGULAR");
+                        long promoVolume = volumeByPriceTag.get("PROMO") == null ? 0 : volumeByPriceTag.get("PROMO");
+                        long regularVolume = volumeByPriceTag.get("REGULAR") == null ? 0: volumeByPriceTag.get("REGULAR");
                         double promoPart = (double) promoVolume / (promoVolume + regularVolume);
                         return new ShipmentStats(groupBy, promoVolume, regularVolume, promoPart);
                     }).collect(Collectors.toList());
