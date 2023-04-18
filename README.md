@@ -1,10 +1,14 @@
+## Используемые технологии: 
+### spring-boot 3.0.0; liquibase; h2; mapStruct; java 11
+## Как запустить
+
 Из директории fmcg-project/core выполнить сборку проекта:
 
-mvn clean package
+**mvn clean package**
 
 Запустить приложение из директории fmcg-project/core/target:
 
-java -jar fmcg-core-1.0.0-SNAPSHOT.jar
+**java -jar fmcg-core-1.0.0-SNAPSHOT.jar**
 
 База данных будет доступна по адресу http://localhost:8080/h2-console
 
