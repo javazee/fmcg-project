@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class Product {
     @Column(nullable = false)
     private String categoryName;
     @JoinColumn(name = "material_id")
+    @LazyCollection(value = LazyCollectionOption.TRUE)
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Price> prices;
 }

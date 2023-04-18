@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.retail.expert.exception.PriceNotFoundException;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Log4j2
 @Service
-@Transactional
+@Transactional(isolation = Isolation.READ_COMMITTED)
 public class PriceServiceImpl extends PriceService {
 
     private final PriceMapper priceMapper;
